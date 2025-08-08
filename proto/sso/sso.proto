@@ -2,19 +2,20 @@ syntax = "proto3";
 
 package auth;
 
-option go_package = "tuzov.sso.v1;ssov1";
+option go_package = "evseev.sso.v1;ssov1";
 
 service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
-  rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
+  rpc Logout (LogoutRequest) returns (LogoutResponse);
+  rpc RefreshToken (RefreshTokenRequest) returns (RefreshTokenResponse);
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
 }
 
 message RegisterRequest {
   string email = 1;
   string password = 2;
 }
-
 message RegisterResponse {
   int64 user_id = 1;
 }
@@ -24,15 +25,36 @@ message LoginRequest {
   string password = 2;
   int32 app_id = 3;
 }
-
 message LoginResponse {
-  string token = 1;
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message LogoutRequest {
+  string refresh_token = 1;
+}
+message LogoutResponse {
+  bool success = 1;
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1;
+}
+message RefreshTokenResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message DeleteUserRequest {
+  int64 user_id = 1;
+}
+message DeleteUserResponse {
+  bool success = 1;
 }
 
 message IsAdminRequest {
   int64 user_id = 1;
 }
-
 message IsAdminResponse {
   bool is_admin = 1;
 }
