@@ -1,4 +1,4 @@
-module github.com/svyatevee/protos/v2
+module github.com/svyatevee/protos
 
 go 1.24.1
 
