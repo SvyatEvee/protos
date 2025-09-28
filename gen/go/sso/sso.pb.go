@@ -309,27 +309,27 @@ func (x *LogoutResponse) GetSuccess() bool {
 	return false
 }
 
-type RefreshTokenRequest struct {
+type GetNewRefreshTokenRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RefreshTokenRequest) Reset() {
-	*x = RefreshTokenRequest{}
+func (x *GetNewRefreshTokenRequest) Reset() {
+	*x = GetNewRefreshTokenRequest{}
 	mi := &file_sso_sso_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RefreshTokenRequest) String() string {
+func (x *GetNewRefreshTokenRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RefreshTokenRequest) ProtoMessage() {}
+func (*GetNewRefreshTokenRequest) ProtoMessage() {}
 
-func (x *RefreshTokenRequest) ProtoReflect() protoreflect.Message {
+func (x *GetNewRefreshTokenRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_sso_sso_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -341,19 +341,19 @@ func (x *RefreshTokenRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RefreshTokenRequest.ProtoReflect.Descriptor instead.
-func (*RefreshTokenRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetNewRefreshTokenRequest.ProtoReflect.Descriptor instead.
+func (*GetNewRefreshTokenRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *RefreshTokenRequest) GetRefreshToken() string {
+func (x *GetNewRefreshTokenRequest) GetRefreshToken() string {
 	if x != nil {
 		return x.RefreshToken
 	}
 	return ""
 }
 
-type RefreshTokenResponse struct {
+type GetNewRefreshTokenResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
@@ -361,20 +361,20 @@ type RefreshTokenResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RefreshTokenResponse) Reset() {
-	*x = RefreshTokenResponse{}
+func (x *GetNewRefreshTokenResponse) Reset() {
+	*x = GetNewRefreshTokenResponse{}
 	mi := &file_sso_sso_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RefreshTokenResponse) String() string {
+func (x *GetNewRefreshTokenResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RefreshTokenResponse) ProtoMessage() {}
+func (*GetNewRefreshTokenResponse) ProtoMessage() {}
 
-func (x *RefreshTokenResponse) ProtoReflect() protoreflect.Message {
+func (x *GetNewRefreshTokenResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_sso_sso_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -386,19 +386,19 @@ func (x *RefreshTokenResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RefreshTokenResponse.ProtoReflect.Descriptor instead.
-func (*RefreshTokenResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetNewRefreshTokenResponse.ProtoReflect.Descriptor instead.
+func (*GetNewRefreshTokenResponse) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *RefreshTokenResponse) GetAccessToken() string {
+func (x *GetNewRefreshTokenResponse) GetAccessToken() string {
 	if x != nil {
 		return x.AccessToken
 	}
 	return ""
 }
 
-func (x *RefreshTokenResponse) GetRefreshToken() string {
+func (x *GetNewRefreshTokenResponse) GetRefreshToken() string {
 	if x != nil {
 		return x.RefreshToken
 	}
@@ -512,21 +512,21 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\rLogoutRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"*\n" +
 	"\x0eLogoutResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\":\n" +
-	"\x13RefreshTokenRequest\x12#\n" +
-	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"^\n" +
-	"\x14RefreshTokenResponse\x12!\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"@\n" +
+	"\x19GetNewRefreshTokenRequest\x12#\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"d\n" +
+	"\x1aGetNewRefreshTokenResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\",\n" +
 	"\x11DeleteUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb0\x02\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc2\x02\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x123\n" +
-	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\x12E\n" +
-	"\fRefreshToken\x12\x19.auth.RefreshTokenRequest\x1a\x1a.auth.RefreshTokenResponse\x12?\n" +
+	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\x12W\n" +
+	"\x12GetNewRefreshToken\x12\x1f.auth.GetNewRefreshTokenRequest\x1a .auth.GetNewRefreshTokenResponse\x12?\n" +
 	"\n" +
 	"DeleteUser\x12\x17.auth.DeleteUserRequest\x1a\x18.auth.DeleteUserResponseB\x15Z\x13evseev.sso.v1;ssov1b\x06proto3"
 
@@ -544,27 +544,27 @@ func file_sso_sso_proto_rawDescGZIP() []byte {
 
 var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_sso_sso_proto_goTypes = []any{
-	(*RegisterRequest)(nil),      // 0: auth.RegisterRequest
-	(*RegisterResponse)(nil),     // 1: auth.RegisterResponse
-	(*LoginRequest)(nil),         // 2: auth.LoginRequest
-	(*LoginResponse)(nil),        // 3: auth.LoginResponse
-	(*LogoutRequest)(nil),        // 4: auth.LogoutRequest
-	(*LogoutResponse)(nil),       // 5: auth.LogoutResponse
-	(*RefreshTokenRequest)(nil),  // 6: auth.RefreshTokenRequest
-	(*RefreshTokenResponse)(nil), // 7: auth.RefreshTokenResponse
-	(*DeleteUserRequest)(nil),    // 8: auth.DeleteUserRequest
-	(*DeleteUserResponse)(nil),   // 9: auth.DeleteUserResponse
+	(*RegisterRequest)(nil),            // 0: auth.RegisterRequest
+	(*RegisterResponse)(nil),           // 1: auth.RegisterResponse
+	(*LoginRequest)(nil),               // 2: auth.LoginRequest
+	(*LoginResponse)(nil),              // 3: auth.LoginResponse
+	(*LogoutRequest)(nil),              // 4: auth.LogoutRequest
+	(*LogoutResponse)(nil),             // 5: auth.LogoutResponse
+	(*GetNewRefreshTokenRequest)(nil),  // 6: auth.GetNewRefreshTokenRequest
+	(*GetNewRefreshTokenResponse)(nil), // 7: auth.GetNewRefreshTokenResponse
+	(*DeleteUserRequest)(nil),          // 8: auth.DeleteUserRequest
+	(*DeleteUserResponse)(nil),         // 9: auth.DeleteUserResponse
 }
 var file_sso_sso_proto_depIdxs = []int32{
 	0, // 0: auth.Auth.Register:input_type -> auth.RegisterRequest
 	2, // 1: auth.Auth.Login:input_type -> auth.LoginRequest
 	4, // 2: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	6, // 3: auth.Auth.RefreshToken:input_type -> auth.RefreshTokenRequest
+	6, // 3: auth.Auth.GetNewRefreshToken:input_type -> auth.GetNewRefreshTokenRequest
 	8, // 4: auth.Auth.DeleteUser:input_type -> auth.DeleteUserRequest
 	1, // 5: auth.Auth.Register:output_type -> auth.RegisterResponse
 	3, // 6: auth.Auth.Login:output_type -> auth.LoginResponse
 	5, // 7: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	7, // 8: auth.Auth.RefreshToken:output_type -> auth.RefreshTokenResponse
+	7, // 8: auth.Auth.GetNewRefreshToken:output_type -> auth.GetNewRefreshTokenResponse
 	9, // 9: auth.Auth.DeleteUser:output_type -> auth.DeleteUserResponse
 	5, // [5:10] is the sub-list for method output_type
 	0, // [0:5] is the sub-list for method input_type
