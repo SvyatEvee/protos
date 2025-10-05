@@ -23,7 +23,8 @@ const (
 	Auth_Login_FullMethodName              = "/auth.Auth/Login"
 	Auth_Logout_FullMethodName             = "/auth.Auth/Logout"
 	Auth_GetNewRefreshToken_FullMethodName = "/auth.Auth/GetNewRefreshToken"
-	Auth_DeleteUser_FullMethodName         = "/auth.Auth/DeleteUser"
+	Auth_DeleteUserByID_FullMethodName     = "/auth.Auth/DeleteUserByID"
+	Auth_DeleteUserByEmail_FullMethodName  = "/auth.Auth/DeleteUserByEmail"
 )
 
 // AuthClient is the client API for Auth service.
@@ -34,7 +35,8 @@ type AuthClient interface {
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 	GetNewRefreshToken(ctx context.Context, in *GetNewRefreshTokenRequest, opts ...grpc.CallOption) (*GetNewRefreshTokenResponse, error)
-	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error)
+	DeleteUserByID(ctx context.Context, in *DeleteUserByIDRequest, opts ...grpc.CallOption) (*DeleteUserByIDResponse, error)
+	DeleteUserByEmail(ctx context.Context, in *DeleteUserByEmailRequest, opts ...grpc.CallOption) (*DeleteUserByEmailResponse, error)
 }
 
 type authClient struct {
@@ -85,10 +87,20 @@ func (c *authClient) GetNewRefreshToken(ctx context.Context, in *GetNewRefreshTo
 	return out, nil
 }
 
-func (c *authClient) DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error) {
+func (c *authClient) DeleteUserByID(ctx context.Context, in *DeleteUserByIDRequest, opts ...grpc.CallOption) (*DeleteUserByIDResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteUserResponse)
-	err := c.cc.Invoke(ctx, Auth_DeleteUser_FullMethodName, in, out, cOpts...)
+	out := new(DeleteUserByIDResponse)
+	err := c.cc.Invoke(ctx, Auth_DeleteUserByID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authClient) DeleteUserByEmail(ctx context.Context, in *DeleteUserByEmailRequest, opts ...grpc.CallOption) (*DeleteUserByEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteUserByEmailResponse)
+	err := c.cc.Invoke(ctx, Auth_DeleteUserByEmail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -103,7 +115,8 @@ type AuthServer interface {
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	GetNewRefreshToken(context.Context, *GetNewRefreshTokenRequest) (*GetNewRefreshTokenResponse, error)
-	DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error)
+	DeleteUserByID(context.Context, *DeleteUserByIDRequest) (*DeleteUserByIDResponse, error)
+	DeleteUserByEmail(context.Context, *DeleteUserByEmailRequest) (*DeleteUserByEmailResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
 
@@ -126,8 +139,11 @@ func (UnimplementedAuthServer) Logout(context.Context, *LogoutRequest) (*LogoutR
 func (UnimplementedAuthServer) GetNewRefreshToken(context.Context, *GetNewRefreshTokenRequest) (*GetNewRefreshTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetNewRefreshToken not implemented")
 }
-func (UnimplementedAuthServer) DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+func (UnimplementedAuthServer) DeleteUserByID(context.Context, *DeleteUserByIDRequest) (*DeleteUserByIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserByID not implemented")
+}
+func (UnimplementedAuthServer) DeleteUserByEmail(context.Context, *DeleteUserByEmailRequest) (*DeleteUserByEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserByEmail not implemented")
 }
 func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
 func (UnimplementedAuthServer) testEmbeddedByValue()              {}
@@ -222,20 +238,38 @@ func _Auth_GetNewRefreshToken_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Auth_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteUserRequest)
+func _Auth_DeleteUserByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUserByIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).DeleteUser(ctx, in)
+		return srv.(AuthServer).DeleteUserByID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Auth_DeleteUser_FullMethodName,
+		FullMethod: Auth_DeleteUserByID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).DeleteUser(ctx, req.(*DeleteUserRequest))
+		return srv.(AuthServer).DeleteUserByID(ctx, req.(*DeleteUserByIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Auth_DeleteUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUserByEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).DeleteUserByEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_DeleteUserByEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).DeleteUserByEmail(ctx, req.(*DeleteUserByEmailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -264,8 +298,12 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Auth_GetNewRefreshToken_Handler,
 		},
 		{
-			MethodName: "DeleteUser",
-			Handler:    _Auth_DeleteUser_Handler,
+			MethodName: "DeleteUserByID",
+			Handler:    _Auth_DeleteUserByID_Handler,
+		},
+		{
+			MethodName: "DeleteUserByEmail",
+			Handler:    _Auth_DeleteUserByEmail_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

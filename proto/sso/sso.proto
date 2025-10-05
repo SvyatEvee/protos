@@ -9,7 +9,8 @@ service Auth {
   rpc Login (LoginRequest) returns (LoginResponse);
   rpc Logout (LogoutRequest) returns (LogoutResponse);
   rpc GetNewRefreshToken (GetNewRefreshTokenRequest) returns (GetNewRefreshTokenResponse);
-  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+  rpc DeleteUserByID (DeleteUserByIDRequest) returns (DeleteUserByIDResponse);
+  rpc DeleteUserByEmail (DeleteUserByEmailRequest) returns (DeleteUserByEmailResponse);
 }
 
 message RegisterRequest {
@@ -44,9 +45,16 @@ message GetNewRefreshTokenResponse {
   string refresh_token = 2;
 }
 
-message DeleteUserRequest {
+message DeleteUserByIDRequest {
   int64 user_id = 1;
 }
-message DeleteUserResponse {
+message DeleteUserByIDResponse {
+  bool success = 1;
+}
+
+message DeleteUserByEmailRequest {
+  string email = 1;
+}
+message DeleteUserByEmailResponse {
   bool success = 1;
 }

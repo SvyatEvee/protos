@@ -405,27 +405,27 @@ func (x *GetNewRefreshTokenResponse) GetRefreshToken() string {
 	return ""
 }
 
-type DeleteUserRequest struct {
+type DeleteUserByIDRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteUserRequest) Reset() {
-	*x = DeleteUserRequest{}
+func (x *DeleteUserByIDRequest) Reset() {
+	*x = DeleteUserByIDRequest{}
 	mi := &file_sso_sso_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteUserRequest) String() string {
+func (x *DeleteUserByIDRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteUserRequest) ProtoMessage() {}
+func (*DeleteUserByIDRequest) ProtoMessage() {}
 
-func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
+func (x *DeleteUserByIDRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_sso_sso_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -437,39 +437,39 @@ func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteUserRequest.ProtoReflect.Descriptor instead.
-func (*DeleteUserRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteUserByIDRequest.ProtoReflect.Descriptor instead.
+func (*DeleteUserByIDRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *DeleteUserRequest) GetUserId() int64 {
+func (x *DeleteUserByIDRequest) GetUserId() int64 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-type DeleteUserResponse struct {
+type DeleteUserByIDResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteUserResponse) Reset() {
-	*x = DeleteUserResponse{}
+func (x *DeleteUserByIDResponse) Reset() {
+	*x = DeleteUserByIDResponse{}
 	mi := &file_sso_sso_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteUserResponse) String() string {
+func (x *DeleteUserByIDResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteUserResponse) ProtoMessage() {}
+func (*DeleteUserByIDResponse) ProtoMessage() {}
 
-func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
+func (x *DeleteUserByIDResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_sso_sso_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -481,12 +481,100 @@ func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
-func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteUserByIDResponse.ProtoReflect.Descriptor instead.
+func (*DeleteUserByIDResponse) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *DeleteUserResponse) GetSuccess() bool {
+func (x *DeleteUserByIDResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type DeleteUserByEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserByEmailRequest) Reset() {
+	*x = DeleteUserByEmailRequest{}
+	mi := &file_sso_sso_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUserByEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUserByEmailRequest) ProtoMessage() {}
+
+func (x *DeleteUserByEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_sso_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUserByEmailRequest.ProtoReflect.Descriptor instead.
+func (*DeleteUserByEmailRequest) Descriptor() ([]byte, []int) {
+	return file_sso_sso_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DeleteUserByEmailRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+type DeleteUserByEmailResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserByEmailResponse) Reset() {
+	*x = DeleteUserByEmailResponse{}
+	mi := &file_sso_sso_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUserByEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUserByEmailResponse) ProtoMessage() {}
+
+func (x *DeleteUserByEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_sso_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUserByEmailResponse.ProtoReflect.Descriptor instead.
+func (*DeleteUserByEmailResponse) Descriptor() ([]byte, []int) {
+	return file_sso_sso_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DeleteUserByEmailResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
 	}
@@ -517,18 +605,22 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"d\n" +
 	"\x1aGetNewRefreshTokenResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\",\n" +
-	"\x11DeleteUserRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\".\n" +
-	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc2\x02\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"0\n" +
+	"\x15DeleteUserByIDRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"2\n" +
+	"\x16DeleteUserByIDResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"0\n" +
+	"\x18DeleteUserByEmailRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"5\n" +
+	"\x19DeleteUserByEmailResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xa4\x03\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x123\n" +
 	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\x12W\n" +
-	"\x12GetNewRefreshToken\x12\x1f.auth.GetNewRefreshTokenRequest\x1a .auth.GetNewRefreshTokenResponse\x12?\n" +
-	"\n" +
-	"DeleteUser\x12\x17.auth.DeleteUserRequest\x1a\x18.auth.DeleteUserResponseB\x15Z\x13evseev.sso.v1;ssov1b\x06proto3"
+	"\x12GetNewRefreshToken\x12\x1f.auth.GetNewRefreshTokenRequest\x1a .auth.GetNewRefreshTokenResponse\x12K\n" +
+	"\x0eDeleteUserByID\x12\x1b.auth.DeleteUserByIDRequest\x1a\x1c.auth.DeleteUserByIDResponse\x12T\n" +
+	"\x11DeleteUserByEmail\x12\x1e.auth.DeleteUserByEmailRequest\x1a\x1f.auth.DeleteUserByEmailResponseB\x15Z\x13evseev.sso.v1;ssov1b\x06proto3"
 
 var (
 	file_sso_sso_proto_rawDescOnce sync.Once
@@ -542,7 +634,7 @@ func file_sso_sso_proto_rawDescGZIP() []byte {
 	return file_sso_sso_proto_rawDescData
 }
 
-var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_sso_sso_proto_goTypes = []any{
 	(*RegisterRequest)(nil),            // 0: auth.RegisterRequest
 	(*RegisterResponse)(nil),           // 1: auth.RegisterResponse
@@ -552,25 +644,29 @@ var file_sso_sso_proto_goTypes = []any{
 	(*LogoutResponse)(nil),             // 5: auth.LogoutResponse
 	(*GetNewRefreshTokenRequest)(nil),  // 6: auth.GetNewRefreshTokenRequest
 	(*GetNewRefreshTokenResponse)(nil), // 7: auth.GetNewRefreshTokenResponse
-	(*DeleteUserRequest)(nil),          // 8: auth.DeleteUserRequest
-	(*DeleteUserResponse)(nil),         // 9: auth.DeleteUserResponse
+	(*DeleteUserByIDRequest)(nil),      // 8: auth.DeleteUserByIDRequest
+	(*DeleteUserByIDResponse)(nil),     // 9: auth.DeleteUserByIDResponse
+	(*DeleteUserByEmailRequest)(nil),   // 10: auth.DeleteUserByEmailRequest
+	(*DeleteUserByEmailResponse)(nil),  // 11: auth.DeleteUserByEmailResponse
 }
 var file_sso_sso_proto_depIdxs = []int32{
-	0, // 0: auth.Auth.Register:input_type -> auth.RegisterRequest
-	2, // 1: auth.Auth.Login:input_type -> auth.LoginRequest
-	4, // 2: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	6, // 3: auth.Auth.GetNewRefreshToken:input_type -> auth.GetNewRefreshTokenRequest
-	8, // 4: auth.Auth.DeleteUser:input_type -> auth.DeleteUserRequest
-	1, // 5: auth.Auth.Register:output_type -> auth.RegisterResponse
-	3, // 6: auth.Auth.Login:output_type -> auth.LoginResponse
-	5, // 7: auth.Auth.Logout:output_type -> auth.LogoutResponse
-	7, // 8: auth.Auth.GetNewRefreshToken:output_type -> auth.GetNewRefreshTokenResponse
-	9, // 9: auth.Auth.DeleteUser:output_type -> auth.DeleteUserResponse
-	5, // [5:10] is the sub-list for method output_type
-	0, // [0:5] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: auth.Auth.Register:input_type -> auth.RegisterRequest
+	2,  // 1: auth.Auth.Login:input_type -> auth.LoginRequest
+	4,  // 2: auth.Auth.Logout:input_type -> auth.LogoutRequest
+	6,  // 3: auth.Auth.GetNewRefreshToken:input_type -> auth.GetNewRefreshTokenRequest
+	8,  // 4: auth.Auth.DeleteUserByID:input_type -> auth.DeleteUserByIDRequest
+	10, // 5: auth.Auth.DeleteUserByEmail:input_type -> auth.DeleteUserByEmailRequest
+	1,  // 6: auth.Auth.Register:output_type -> auth.RegisterResponse
+	3,  // 7: auth.Auth.Login:output_type -> auth.LoginResponse
+	5,  // 8: auth.Auth.Logout:output_type -> auth.LogoutResponse
+	7,  // 9: auth.Auth.GetNewRefreshToken:output_type -> auth.GetNewRefreshTokenResponse
+	9,  // 10: auth.Auth.DeleteUserByID:output_type -> auth.DeleteUserByIDResponse
+	11, // 11: auth.Auth.DeleteUserByEmail:output_type -> auth.DeleteUserByEmailResponse
+	6,  // [6:12] is the sub-list for method output_type
+	0,  // [0:6] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_sso_sso_proto_init() }
@@ -584,7 +680,7 @@ func file_sso_sso_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_sso_proto_rawDesc), len(file_sso_sso_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
